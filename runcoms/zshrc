@@ -11,3 +11,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# Tarun: Loads all *.zsh files in my zshcfg
+[[ -d ~/dotfiles ]] && export dotfilesDir=$HOME/dotfiles
+[[ -d ~/src/dotfiles ]] && export dotfilesDir=$HOME/src/dotfiles
+
+# https://stackoverflow.com/questions/14677936/source-multiple-files-in-zshrc-with-wildcard
+if [[ -d $dotfilesDir ]]; then
+  for file in $dotfilesDir/zshcfg/*.zsh; do
+    #echo "Sourcing $file"
+    source "$file"
+  done
+fi
