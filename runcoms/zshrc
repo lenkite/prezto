@@ -16,6 +16,9 @@ fi
 [[ -d ~/dotfiles ]] && export dotfilesDir=$HOME/dotfiles
 [[ -d ~/src/dotfiles ]] && export dotfilesDir=$HOME/src/dotfiles
 
+autoload -U zmv
+alias mmv='noglob zmv -W'
+
 # https://stackoverflow.com/questions/14677936/source-multiple-files-in-zshrc-with-wildcard
 if [[ -d $dotfilesDir ]]; then
   for file in $dotfilesDir/zshcfg/*.zsh; do
@@ -23,3 +26,5 @@ if [[ -d $dotfilesDir ]]; then
     source "$file"
   done
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
